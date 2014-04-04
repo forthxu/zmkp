@@ -35,7 +35,7 @@ run()
 	#生成关闭的程序
 	echo "#!/bin/bash" > ${TMP_PATH}kill_${1}.sh
 	echo "echo 'run:${2} ${3} pid:$!'" >> ${TMP_PATH}kill_${1}.sh	
-	echo "kill -9 $!" >> ${TMP_PATH}kill_${1}.sh
+	echo "#kill -9 $!" >> ${TMP_PATH}kill_${1}.sh
 	chmod 777 ${TMP_PATH}kill_${1}.sh
 	# sleep 1
 	#显示运行的程序
@@ -79,6 +79,7 @@ for pid in $pids;do
 	kill -9 $pid
 done
 run a ./skynet ../config
+echo "----------------------------"
 run b ./skynet ../config_log
 echo ""
 echo "  ---------- 结束 ----------"

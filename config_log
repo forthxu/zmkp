@@ -1,7 +1,8 @@
 thread = 8
 mqueue = 256
 cpath = "./cservice/?.so"
-logger = "../log/b.log" --nil
+-- logger = nil
+logger = "../log/b.log"
 harbor = 2
 address = "127.0.0.1:2527"
 master = "127.0.0.1:2013"
