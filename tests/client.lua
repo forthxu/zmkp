@@ -3,7 +3,7 @@ package.cpath = "./skynet/luaclib/?.so"
 local socket = require "clientsocket"
 local cjson = require "cjson"
 
-local fd = socket.connect("127.0.0.1", 10104)
+local fd = socket.connect("127.0.0.1", 10101)
 
 local last
 local result = {}

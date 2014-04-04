@@ -25,7 +25,8 @@ run()
 	BACKUP_LOG_NAME="${LOG_PATH}${1}_${DATA_SECOND}_old.log"
 	#备份日志
 	if [ -a "${LOG_NAME}" ]; then
-		mv ${LOG_NAME} ${BACKUP_LOG_NAME}
+		# mv ${LOG_NAME} ${BACKUP_LOG_NAME}
+		rm -rf ${LOG_NAME}
 	fi
 	#启动
 	nohup ${2} ${3} >> ${LOG_NAME} 2>&1 &
@@ -41,12 +42,12 @@ run()
 	# echo "nohup ${2} ${3} >> ${LOG_NAME} 2>&1 &"
 	echo "run:$2 $3  pid:$!  log:${LOG_NAME} "
 	#打印启动错误
-	sleep 1
-	if [ -s "${LOG_NAME}" ]; then
-		echo "启动日志："
-		cat ${LOG_NAME}
+	# sleep 1
+	# if [ -s "${LOG_NAME}" ]; then
+		# echo "启动日志："
+		# cat ${LOG_NAME}
 		# exit
-	fi
+	# fi
 }
 
 echo "  ---------- 开始 ----------"
@@ -72,8 +73,9 @@ make linux;
 echo ""
 echo "  ---------- 执行 ---------"
 echo ""
-run a ./skynet ../configs/simpledb.cfg
-echo "----------------------------"
-run b ./skynet ../configs/log.cfg
+# run a ./skynet ../configs/simpledb.cfg
+# echo "----------------------------"
+# run b ./skynet ../configs/log.cfg
+run c ./skynet ../configs/center.cfg
 echo ""
 echo "  ---------- 结束 ----------"
