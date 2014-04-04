@@ -42,12 +42,13 @@ run()
 	# echo "nohup ${2} ${3} >> ${LOG_NAME} 2>&1 &"
 	echo "run:$2 $3  pid:$!  log:${LOG_NAME} "
 	#打印启动错误
-	# sleep 1
-	# if [ -s "${LOG_NAME}" ]; then
-		# echo "启动日志："
-		# cat ${LOG_NAME}
+	sleep 3
+	if [ -s "${LOG_NAME}" ]; then
+		echo "启动日志："
+		cat ${LOG_NAME}
 		# exit
-	# fi
+	fi
+	sleep 1
 }
 
 echo "  ---------- 开始 ----------"
