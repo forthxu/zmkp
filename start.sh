@@ -72,8 +72,8 @@ make linux;
 echo ""
 echo "  ---------- 执行 ---------"
 echo ""
-run a ./skynet ../config
+run a ./skynet ../configs/simpledb.cfg
 echo "----------------------------"
-run b ./skynet ../config_log
+run b ./skynet ../configs/log.cfg
 echo ""
 echo "  ---------- 结束 ----------"
