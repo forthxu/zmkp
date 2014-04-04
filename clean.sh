@@ -7,7 +7,7 @@ SKYNET_PATH="./skynet/"
 
 git checkout . && git clean -xdf
 cd ${SKYNET_PATH};
-git checkout . && git clean -xdf
+#git checkout . && git clean -xdf
 
 #日志目录
 LOG_PATH="../log/"
