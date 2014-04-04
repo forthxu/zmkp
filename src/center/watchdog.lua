@@ -1,5 +1,6 @@
 local skynet = require "skynet"
 local netpack = require "netpack"
+local login = require "class/login"
 
 local CMD = {}
 local SOCKET = {}
@@ -30,6 +31,7 @@ function SOCKET.error(fd, msg)
 end
 
 function SOCKET.data(fd, msg)
+	login.echo()
 end
 
 function CMD.start(conf)
