@@ -74,6 +74,10 @@ make linux;
 echo ""
 echo "  ---------- 执行 ---------"
 echo ""
+pids=`ps aux | grep skynet | awk -F " " '{if($11 != "grep")print $2;}'`
+for pid in $pids;do
+	kill -9 $pid
+done
 run a ./skynet ../config
 run b ./skynet ../config_log
 echo ""
