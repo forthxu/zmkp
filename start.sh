@@ -52,7 +52,9 @@ run()
 
 echo "  ---------- 开始 ----------"
 echo ""
+# git checkout . && git clean -xdf
 cd ${SKYNET_PATH};
+# git checkout . && git clean -xdf
 #日志目录
 LOG_PATH="../log/"
 if [ ! -x "$LOG_PATH" ]; then
