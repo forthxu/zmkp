@@ -28,14 +28,12 @@ run()
 		mv ${LOG_NAME} ${BACKUP_LOG_NAME}
 	fi
 	#启动
-	# nohup ${2} ${3} >> ${LOG_NAME} 2>&1 &
-	(${2} ${3} &)
-	# ${2} ${3} &
-	# ${2} ${3}
+	nohup ${2} ${3} >> ${LOG_NAME} 2>&1 &
+	# (${2} ${3} &)
 	#生成关闭的程序
 	echo "#!/bin/bash" > ${TMP_PATH}kill_${1}.sh
-	echo "echo 'run:${2} ${3} pid:$!'" >> ${TMP_PATH}kill_${1}.sh	
-	echo "#kill -9 $!" >> ${TMP_PATH}kill_${1}.sh
+	echo "echo 'run: ${2} ${3} pid: $!'" >> ${TMP_PATH}kill_${1}.sh	
+	echo "kill -9 $!" >> ${TMP_PATH}kill_${1}.sh
 	chmod 777 ${TMP_PATH}kill_${1}.sh
 	# sleep 1
 	#显示运行的程序
@@ -74,10 +72,6 @@ make linux;
 echo ""
 echo "  ---------- 执行 ---------"
 echo ""
-pids=`ps aux | grep skynet | awk -F " " '{if($11 != "grep")print $2;}'`
-for pid in $pids;do
-	kill -9 $pid
-done
 run a ./skynet ../config
 echo "----------------------------"
 run b ./skynet ../config_log

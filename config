@@ -1,7 +1,7 @@
 root = "./"
 thread = 8
--- logger = nil
-logger = root.."../log/a.log"
+logger = nil
+-- logger = root.."../log/a.log"
 harbor = 1
 address = "127.0.0.1:12526"
 master = "127.0.0.1:12013"
