@@ -11,6 +11,7 @@ local function xfs_send(v)
 	socket.write(client_fd, netpack.pack(v))
 end
 
+
 skynet.register_protocol {
 	name = "client",
 	id = skynet.PTYPE_CLIENT,
@@ -19,7 +20,7 @@ skynet.register_protocol {
 	end,
 	dispatch = function (session, address, text)
 		print("ok",text)
-		xfs_send("data:"..text."\n")
+		xfs_send("data:"..text)
 	end
 }
 
