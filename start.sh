@@ -51,10 +51,12 @@ run()
 	sleep 1
 }
 
+echo "  >>---------- 开始 ----------"
+echo "  >>---------- 处理protocbuf ----------"
 cd ./3rd/pbc/ && make && cd ./binding/lua/ && make && cd ../../../../ && cp -f ./3rd/pbc/binding/lua/protobuf.lua ./skynet/lualib/ && cp -f ./3rd/pbc/binding/lua/protobuf.so ./skynet/luaclib/
 protoc -o ./res/addressbook.pb ./res/addressbook.proto 
 
-echo "  ---------- 开始 ----------"
+echo "  >>---------- 进入skynet目录 ----------"
 echo ""
 # git checkout . && git clean -xdf
 cd ${SKYNET_PATH};
@@ -71,15 +73,15 @@ if [ ! -x "$TMP_PATH" ]; then
 	mkdir "$TMP_PATH"
 fi
 echo ""
-echo "  ---------- 编译 ----------"
+echo "  >>---------- 编译 ----------"
 echo ""
 make linux;
 echo ""
-echo "  ---------- 执行 ---------"
+echo "  >>---------- 执行 ---------"
 echo ""
 # run a ./skynet ../configs/simpledb.cfg
 # echo "----------------------------"
 # run b ./skynet ../configs/log.cfg
 run c ./skynet ../configs/center.cfg
 echo ""
-echo "  ---------- 结束 ----------"
+echo "  >>---------- 结束 ----------"
