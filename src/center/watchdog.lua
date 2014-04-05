@@ -13,8 +13,15 @@ local agent = {}
 function SOCKET.open(fd, addr)
 	agent[fd] = skynet.newservice("agent")
 	skynet.call(agent[fd], "lua", "start", gate, fd)
-	skynet.call(agent[fd], "lua", "test", "xxx", "yyy")
+	skynet.call(agent[fd], "xfs", "start a new agent")
 end
+
+skynet.register_protocol {
+	name = "xfs",
+	id = 12,
+	pack = skynet.pack,
+	unpack = skynet.unpack,
+}
 
 local function close_agent(fd)
 	local a = agent[fd]

@@ -51,6 +51,9 @@ run()
 	sleep 1
 }
 
+cd ./3rd/pbc/binding/lua/ && make && cd ../../../../ && cp ./3rd/pbc/binding/lua/protobuf.lua ./skynet/lualib/ && cp ./3rd/pbc/binding/lua/protobuf.so ./skynet/luaclib/
+protoc -o ./res/addressbook.pb ./res/addressbook.proto 
+
 echo "  ---------- 开始 ----------"
 echo ""
 # git checkout . && git clean -xdf
