@@ -1,7 +1,6 @@
 local skynet = require "skynet"
 local netpack = require "netpack"
 
-local jsonpack = require "jsonpack"
 package.path = string.format("%s;%s?.lua;",   package.path, "./../src/center/class/")  --增加lua文件的的路径
 local login = require "login"
 
@@ -42,7 +41,7 @@ function SOCKET.error(fd, msg)
 end
 
 function SOCKET.data(fd, msg)
-	-- login.echo()
+	-- print("[data]",fd, msg)
 end
 
 function CMD.start(conf)

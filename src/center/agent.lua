@@ -7,27 +7,19 @@ local CMD = {}
 
 local client_fd
 
-local function send_client(v)
-	socket.write(client_fd, netpack.pack(jsonpack.pack(0,v)))
-end
-
-local function response_client(session,v)
-	socket.write(client_fd, netpack.pack(jsonpack.response(session,v)))
+local function xfs_send(v)
+	socket.write(client_fd, netpack.pack(v))
 end
 
 skynet.register_protocol {
 	name = "client",
 	id = skynet.PTYPE_CLIENT,
 	unpack = function (msg, sz)
-		return jsonpack.unpack(skynet.tostring(msg,sz))
+		return skynet.tostring(msg,sz)
 	end,
-	dispatch = function (_, _, session, args)
-		local ok, result = pcall(skynet.call,"CENTER", "lua", table.unpack(args))
-		if ok then
-			response_client(session, { true, result })
-		else
-			response_client(session, { false, "Invalid command" })
-		end
+	dispatch = function (session, address, text)
+		print("ok",text)
+		xfs_send("data:"..text."\n")
 	end
 }
 
@@ -38,7 +30,7 @@ skynet.register_protocol {
 	unpack = skynet.unpack,
 	dispatch = function (session, address, text)
 		print("[LOG]", skynet.address(address),text)
-		send_client {true,"Welcome to skynet"}
+		xfs_send("Welcome to skynet\n")
 		skynet.retpack(text)
 	end
 }
@@ -46,7 +38,6 @@ skynet.register_protocol {
 function CMD.start(gate , fd)
 	client_fd = fd
 	skynet.call(gate, "lua", "forward", fd)
-	-- send_client "Welcome to skynet"
 end
 
 skynet.start(function()
