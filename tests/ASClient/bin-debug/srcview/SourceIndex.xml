@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>ClientTest 的源代码</title>
+	<nodes>
+		<node label="src">
+			<node label="assets">
+				<node label="crossdomain.xml" url="source/assets/crossdomain.xml.txt"/>
+			</node>
+			<node icon="packageIcon" label="socket" expanded="true">
+				<node icon="actionScriptIcon" label="ClientSocket.as" url="source/socket/ClientSocket.as.html"/>
+			</node>
+			<node icon="packageIcon" label="view" expanded="true">
+				<node icon="actionScriptIcon" label="TestView.as" url="source/view/TestView.as.html"/>
+			</node>
+			<node icon="mxmlAppIcon" selected="true" label="ClientTest.as" url="source/ClientTest.as.html"/>
+		</node>
+	</nodes>
+	<zipfile label="下载源代码（ZIP，5 KB）" url="ClientTest.zip">
+	</zipfile>
+	<sdklink label="下载 Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download_zh_CN">
+	</sdklink>
+</index>
