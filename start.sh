@@ -51,7 +51,7 @@ run()
 	sleep 1
 }
 
-cd ./3rd/pbc/ && make && cd ./binding/lua/ && make && cd ../../../../ && cp ./3rd/pbc/binding/lua/protobuf.lua ./skynet/lualib/ && cp ./3rd/pbc/binding/lua/protobuf.so ./skynet/luaclib/
+cd ./3rd/pbc/ && make && cd ./binding/lua/ && make && cd ../../../../ && cp -f ./3rd/pbc/binding/lua/protobuf.lua ./skynet/lualib/ && cp -f ./3rd/pbc/binding/lua/protobuf.so ./skynet/luaclib/
 protoc -o ./res/addressbook.pb ./res/addressbook.proto 
 
 echo "  ---------- 开始 ----------"
