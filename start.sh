@@ -54,7 +54,10 @@ run()
 echo "  >>---------- 开始 ----------"
 echo "  >>---------- 处理protocbuf ----------"
 cd ./3rd/pbc/ && make && cd ./binding/lua/ && make && cd ../../../../ && cp -f ./3rd/pbc/binding/lua/protobuf.lua ./skynet/lualib/ && cp -f ./3rd/pbc/binding/lua/protobuf.so ./skynet/luaclib/
-protoc -o ./res/addressbook.pb ./res/addressbook.proto 
+protoc -o ./res/addressbook.pb ./res/addressbook.proto
+
+echo "  >>---------- 处理协议 ----------"
+cd ./3rd/p/ && gcc -g -O2 -Wall -I../../skynet/3rd/lua   -fPIC --shared ./lua-p.c -o ./p.so && cd ../../ && cp -f ./3rd/p/p.so ./skynet/luaclib/
 
 echo "  >>---------- 进入skynet目录 ----------"
 echo ""

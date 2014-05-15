@@ -2,6 +2,7 @@ local skynet = require "skynet"
 local jsonpack = require "jsonpack"
 local netpack = require "netpack"
 local socket = require "socket"
+p=require("p.core")
 
 local CMD = {}
 
@@ -19,8 +20,11 @@ skynet.register_protocol {
 		return skynet.tostring(msg,sz)
 	end,
 	dispatch = function (session, address, text)
-		print("ok",text)
-		xfs_send("data:"..text)
+		x = p.unpack(text)
+		print("ok",x.msg)
+		
+		xfs_send(p.pack(1,1025,"data:"..x.msg))
+		xfs_send(p.pack(1,1026,"你好"))
 	end
 }
 
@@ -31,7 +35,8 @@ skynet.register_protocol {
 	unpack = skynet.unpack,
 	dispatch = function (session, address, text)
 		print("[LOG]", skynet.address(address),text)
-		xfs_send("Welcome to skynet\n")
+		-- xfs_send("Welcome to skynet\n")
+		xfs_send(p.pack(1,1024,"Welcome to skynet\n"))
 		skynet.retpack(text)
 	end
 }

@@ -9,6 +9,9 @@ local SOCKET = {}
 local gate
 local agent = {}
 
+
+
+
 function SOCKET.open(fd, addr)
 	agent[fd] = skynet.newservice("agent")
 	skynet.call(agent[fd], "lua", "start", gate, fd)
